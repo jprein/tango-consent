@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TANGO-CC</title>
+  </head>
+  <body>
+    <div class="flex-wrapper">
+      <div class="flex-item">
+        <h1 class="heading">Wir begrüßen Sie ganz herzlich!</h1>
+
+        <p>
+          Wenn Sie möchten, können Sie sich ein kurzes Willkommensvideo von
+          unserer Studienleiterin anschauen. Klicken Sie dazu auf das
+          "play"-Zeichen auf dem Video.
+        </p>
+
+        <div id="video-img-wrapper">
+          <video id="video-img-item" controls>
+            <source src="videos/tango.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <p>
+          <strong>
+            Um zur Anleitung unserer Studie zukommen, klicken Sie bitte auf den
+            "weiter"-Knopf.
+          </strong>
+        </p>
+
+        <div class="button-center-wrapper">
+          <button type="button" class="custom-button" id="continue-button">
+            <span><strong>WEITER</strong></span>
+          </button>
+        </div>
+
+        <hr style="width: 100%; text-align: left; margin-left: 0" />
+
+        <div class="columns">
+          <div class="col">
+            <img id="logo-ccp" src="./images/mpi-ccp-en.svg" />
+          </div>
+          <div class="col">
+            <img id="logo-leuphana" src="./images/leuphana-en.svg" />
+          </div>
+        </div>
+
+        <p class="imprint">
+          <a href="https://www.eva.mpg.de/imprint/" target="_blank">Imprint</a>
+          /
+          <a
+            href="https://www.eva.mpg.de/privacy-policy"
+            target="_blank"
+            id="dataProtection"
+          >
+            Data Protection</a
+          >
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/js/welcome.js"></script>
+  </body>
+</html>
