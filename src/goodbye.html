@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#006c66" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <title>Max-Planck-Kinderstudie</title>
+  </head>
+  <body>
+    <div class="flex-wrapper">
+      <div class="flex-item">
+        <h1 class="heading">Vielen herzlichen Dank für eure Hilfe!</h1>
+
+        <div id="video-img-wrapper">
+          <img
+            id="video-img-item"
+            alt="Picture of the Institute"
+            src="images/mpi-surprise.gif"
+          />
+        </div>
+
+        <p>
+          Toll - alles geschafft! Herzlichen Dank für's Mitspielen. Wir hoffen,
+          es hat dir Spaß gemacht.
+          <br />
+        </p>
+
+        <p>
+          Als ein kleines Dankeschön können Sie sich ein Bild zum Ausmalen oder
+          eine Bastelanleitung herunterladen. Klicken Sie dafür einfach auf den
+          Knopf "Zum kleinen Geschenk".
+        </p>
+
+        <p>
+          Falls ihr Fragen oder Anmerkungen habt, wendet euch bitte an diese
+          E-Mail-Adresse:
+          <a href="mailto:forschungsreise@eva.mpg.de" class="cryptedmail">
+            forschungsreise@eva.mpg.de
+          </a>
+        </p>
+
+        <p>Wir freuen uns auf ein Wiedersehen!</p>
+
+        <p>
+          Herzliche Grüße und bis bald, <br />
+          Ihr Forschungsteam vom Max-Planck-Institut und der Leuphana
+          Universität Lüneburg
+        </p>
+
+        <div id="button-center-wrapper">
+          <a id="a-download" href="./thanks.pdf" download="MPI_Dankeschön">
+            <button type="button" class="custom-button" id="gift-button">
+              <span><strong>Zum kleinen Geschenk</strong></span>
+            </button>
+          </a>
+        </div>
+
+        <hr style="width: 100%; text-align: left; margin-left: 0" />
+
+        <p>
+          Liebe Eltern, <br />
+          Sie haben sich selbst nur aus Interesse ohne Ihr Kind durchgeklickt?
+          Kein Problem! <br />
+          Bitte klicken Sie hier, damit wir diese Daten
+          <strong>NICHT</strong> nutzen.
+        </p>
+
+        <div>
+          <input type="checkbox" id="delete-checkbox" />
+          <label for="delete-checkbox"
+            ><strong>Bitte nutzen Sie unsere Daten NICHT.</strong></label
+          >
+        </div>
+
+        <br />
+
+        <div class="button-center-wrapper">
+          <button
+            type="button"
+            class="custom-button"
+            id="delete-button"
+            disabled
+          >
+            <span><strong>Daten löschen</strong></span>
+          </button>
+        </div>
+
+        <p id="p-delete"></p>
+
+        <hr style="width: 100%; text-align: left; margin-left: 0" />
+
+        <div class="columns">
+          <div class="col">
+            <img id="logo-ccp" src="./images//mpi-ccp-en.svg" />
+          </div>
+          <div class="col">
+            <img id="logo-leuphana" src="./images/leuphana-en.svg" />
+          </div>
+        </div>
+
+        <p class="imprint">
+          <a href="https://www.eva.mpg.de/imprint/" target="_blank">Imprint</a>
+          /
+          <a
+            href="https://www.eva.mpg.de/privacy-policy"
+            target="_blank"
+            id="dataProtection"
+          >
+            Data Protection</a
+          >
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/js/goodbye.js"></script>
+  </body>
+</html>
