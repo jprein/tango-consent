@@ -2,7 +2,7 @@ import '../css/style.css';
 
 // Get the subject ID from the URL or use a default value
 const subjID =
-  new URL(document.location.href).searchParams.get('ID') || 'testID';
+  new URL(document.location.href).searchParams.get('subjID') || 'testID';
 
 // Store the subject ID in local storage
 localStorage.setItem('subjID', JSON.stringify(subjID));
