@@ -1,3 +1,6 @@
+src/scripts
+src/participant-data
+
 # Logs
 logs
 *.log
