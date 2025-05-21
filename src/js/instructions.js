@@ -6,18 +6,33 @@ const checkbox = document.getElementById('confirm-checkbox');
 // Needs JSON.parse to convert the string back to an object, otherwise we get e.g. "\"test\""
 const subjID = JSON.parse(localStorage.getItem('subjID')) || 'test';
 
-// function for response logging, creating json file on server
-function uploadData(safe, ID) {
-  fetch('data/data.php', {
+// function for response logging, creating csv file on server
+function uploadData(toSave) {
+  // create a CSV string from the object with hard-coded header
+  const header = 'subjID,consent,timestamp';
+  const row = toSave.subjID + ',' + toSave.consent + ',' + toSave.timestamp;
+  const csvContent = header + '\n' + row + '\n';
+
+  // save current date & time (note: UTC time!)
+  const day = new Date().toISOString().substring(0, 10);
+  const time = new Date().toISOString().substring(11, 19);
+
+  // prepare form data to send the CSV data as a file
+  const formData = new FormData();
+  formData.append(
+    'csvFile',
+    new Blob([csvContent], { type: 'text/csv' }),
+    `tangoCC-consent-${toSave.subjID}-${day}-${time}.csv`,
+  );
+
+  // send the data to the server
+  fetch('./data/data.php', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ data: JSON.stringify(safe), fname: ID }),
+    body: formData,
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
+    .then((response) => response.text())
+    .then((result) => {
+      console.log('Success:', result);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -28,8 +43,6 @@ const handleChecked = () => {
   // If the checkbox is not checked, disable the button
   button.disabled = !checkbox.checked;
 
-  console.log(checkbox.checked);
-
   if (checkbox.checked) {
     const date = new Date();
 
@@ -38,10 +51,8 @@ const handleChecked = () => {
       subjID: subjID,
       consent: true,
       timestamp: date.toISOString(),
-      epoch: date.getTime(),
     };
-    const toSaveID = `${subjID}`;
-    uploadData(toSave, toSaveID);
+    uploadData(toSave);
   }
 };
 

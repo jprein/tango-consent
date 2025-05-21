@@ -15,18 +15,33 @@ const handleChecked = () => {
 
 deleteCheckbox.addEventListener('change', handleChecked, { capture: false });
 
-// function for response logging, creating json file on server
-function uploadData(safe, ID) {
-  fetch('data/data.php', {
+// function for response logging, creating csv file on server
+function uploadData(toSave) {
+  // create a CSV string from the object with hard-coded header
+  const header = 'subjID,consent,timestamp';
+  const row = toSave.subjID + ',' + toSave.consent + ',' + toSave.timestamp;
+  const csvContent = header + '\n' + row + '\n';
+
+  // save current date & time (note: UTC time!)
+  const day = new Date().toISOString().substring(0, 10);
+  const time = new Date().toISOString().substring(11, 19);
+
+  // prepare form data to send the CSV data as a file
+  const formData = new FormData();
+  formData.append(
+    'csvFile',
+    new Blob([csvContent], { type: 'text/csv' }),
+    `tangoCC-NOconsent-${toSave.subjID}-${day}-${time}.csv`,
+  );
+
+  // send the data to the server
+  fetch('./data/data.php', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ data: JSON.stringify(safe), fname: ID }),
+    body: formData,
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
+    .then((response) => response.text())
+    .then((result) => {
+      console.log('Success:', result);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -43,12 +58,10 @@ const handleDeleteClick = (event) => {
   const toSave = {
     // get ID out of URL parameter
     subjID: subjID,
-    deleteData: true,
+    consent: false,
     timestamp: date.toISOString(),
-    epoch: date.getTime(),
   };
-  const toSaveID = `DELETE${subjID}`;
-  uploadData(toSave, toSaveID);
+  uploadData(toSave);
 };
 
 deleteButton.addEventListener('click', handleDeleteClick, {
