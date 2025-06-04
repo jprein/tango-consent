@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#006c66" />
+    <link rel="manifest" href="./assets/manifest-Dum4jK4D.webmanifest" />
+    <link rel="icon" href="./favicon.ico" sizes="48x48" />
+    <link rel="icon" href="./favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon-180x180.png" />
+    <title>Max-Planck-Kinderstudie</title>
+    <script type="module" crossorigin src="./assets/webcam-Bqu9oMaO.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/style-HX_bqIYk.js">
+    <link rel="stylesheet" crossorigin href="./assets/style-Be76wwAj.css">
+  </head>
+  <body>
+    <div class="flex-wrapper">
+      <div class="flex-item">
+        <h1 class="heading">Einrichtung der Webcam</h1>
+        <p>
+          Um deine Antworten zuordnen zukönnen, möchten wir dich mit der Webcam
+          aufzeichnen. Hierzu lasst ihr euch bitte von euren Eltern helfen!
+          Sollte es bei der Webcam-Vorschau Probleme geben, dann versucht es
+          bitte mit einem anderen Browser (z.B. Chrome, Firefox, Edge etc.).
+        </p>
+
+        <p>
+          <strong>
+            Wenn ihr auf "Webcam-Vorschau" klickt, werdet ihr um die
+            Video-Erlaubnis gebeten. <br />
+            Möglicherweise wird bei Beginn des Spieles ein zweites Mal danach
+            gefragt. Stimmt bitte in beiden Fällen zu.
+          </strong>
+        </p>
+
+        <p>
+          Mit dem Klick auf "Webcam-Vorschau" öffnet sich ein Fenster mit eurem
+          Webcam-Bild. Bitte setze dich so hin, dass du gut zu sehen bist. Durch
+          einen Klick neben das Webcam-Bild schließt du wieder das Fenster.
+          Danach klickst du auf "Zur Studie".
+        </p>
+
+        <p>
+          Liebe Eltern, Sie können Ihrem Kind gerne den Studientext auf den
+          nächsten Seiten vorlesen. Jugendliche können sich ab hier auch gerne
+          alleine weiterklicken.
+        </p>
+
+        <div class="button-center-wrapper">
+          <button
+            type="button"
+            class="custom-button"
+            id="button-webcam-item"
+            onclick="mrec.startStream({
+            audio: false,
+            video: {
+              frameRate: {
+                min: 3,
+                ideal: 5,
+                max: 30,
+              },
+              width: {
+                min: 160,
+                ideal: 320,
+                max: 640,
+              },
+              height: {
+                min: 120,
+                ideal: 240,
+                max: 480,
+              },
+              facingMode: 'user',
+            },
+          }); mrec.openVideoPreview()"
+          >
+            <span><strong>Webcam-Vorschau</strong></span>
+          </button>
+        </div>
+
+        <div class="button-center-wrapper">
+          <button type="button" class="custom-button" id="continue-button">
+            <span><strong>ZUR STUDIE</strong></span>
+          </button>
+        </div>
+
+        <hr style="width: 100%; text-align: left; margin-left: 0" />
+
+        <div class="columns">
+          <div class="col">
+            <img id="logo-ccp" src="./assets/mpi-ccp-en-6AIcBykI.svg" />
+          </div>
+          <div class="col">
+            <img id="logo-leuphana" src="./assets/leuphana-en-CU5vRmU4.svg" />
+          </div>
+        </div>
+
+        <p class="imprint">
+          <a href="https://www.eva.mpg.de/imprint/" target="_blank">Imprint</a>
+          /
+          <a
+            href="https://www.eva.mpg.de/privacy-policy"
+            target="_blank"
+            id="dataProtection"
+          >
+            Data Protection</a
+          >
+        </p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@ccp-eva/media-recorder"></script>
+  </body>
+</html>
